@@ -1,193 +1,221 @@
-# SwiftShip Tracker — Salesforce CRM & Agentforce AI Project Report
+# SwiftShip Tracker — Salesforce Technical Documentation & System Report
+
+[![Salesforce](https://img.shields.io/badge/Platform-Salesforce%20Lightning-blue?logo=salesforce)](https://www.salesforce.com)
+[![Automation](https://img.shields.io/badge/Automation-Auto--Launched%20Flow-orange)](#-process-automation--flow-builder)
+[![Security](https://img.shields.io/badge/Security-Permission%20Sets%20%7C%20FLS-green)](#-security--access-control)
+[![Architecture](https://img.shields.io/badge/Architecture-Logistics%20CRM-purple)](#-system-architecture-overview)
 
 ---
 
-## 1. Project Overview & Executive Summary
+## 1. System Architecture Overview
 
-### 1.1 Problem Statement
-Customers frequently experience delays, opaque communication, and frustration when attempting to book, track, and manage parcel shipments. Traditional parcel ecosystems rely on phone support queues or fragmented third-party portals. Operational couriers and delivery agents lack unified real-time tracking interfaces to record status updates and geolocation check-ins.
-
-### 1.2 Objective
-To architect and deploy a robust, cloud-native **Parcel Management and Tracking Portal on Salesforce CRM** featuring:
-* A normalized relational data model interconnecting shipments, delivery routes, senders, and receivers.
-* Automated status retrieval and message formatting via Salesforce **Flow Builder**.
-* Real-time conversational AI integration architecture via **Salesforce Agentforce** and **Prompt Builder**.
-* Granular role-based access control and security management using custom **Permission Sets**.
-* Seamless Lightning Experience with custom tabs and pre-configured list views.
-
-### 1.3 Project Implementation Status (Naan Mudhalvan Portal)
-All phases specified in the TN Skills program have been successfully planned, developed, configured, and tested in Salesforce:
-
-![Project Workspace & Milestones](../assets/screenshots/naan_mudhalvan_portal.png)
-
----
-
-## 2. System Architecture & Relational Data Model
-
-### 2.1 Entity Relationship Diagram (ERD)
-
-```mermaid
-erDiagram
-    SENDER ||--o{ PARCEL : "books / sends"
-    SENDER ||--o{ DELIVERY : "originates"
-    SENDER ||--o{ RECEIVER : "linked to"
-    RECEIVER ||--o{ PARCEL : "receives"
-    PARCEL ||--o{ DELIVERY : "tracked by"
-
-    PARCEL {
-        string Name "Parcel Name"
-        string Parcel_ID__c "Auto Number (P-{000})"
-        string Status__c "Picklist (Booked, In Transit, Out for Delivery, Delivered)"
-        number Weight__c "Number (18, 2) in kg"
-        date Estimated_Delivery_Date__c "Expected Delivery Date"
-        id Sender__c "Lookup(Sender__c)"
-    }
-
-    DELIVERY {
-        string Name "Delivery Name"
-        location Current_Location__c "Geolocation (Latitude/Longitude)"
-        date Estimated_Delivery_Date__c "Expected Delivery Date"
-        id Sender__c "Lookup(Sender__c)"
-        id Parcel__c "Lookup(Parcel__c)"
-    }
-
-    SENDER {
-        string Name "Sender Name"
-        location Sender_Adress__c "Geolocation (Latitude/Longitude)"
-        phone Sende_Contact__c "Phone"
-        email Sender_Email__c "Email"
-    }
-
-    RECEIVER {
-        string Name "Receiver Name"
-        location Receiver_Adress__c "Geolocation (Latitude/Longitude)"
-        phone Receiver_Contact__c "Phone"
-        email Receiver_Email__c "Email"
-        id Sender__c "Lookup(Sender__c)"
-        id Parcel__c "Lookup(Parcel__c)"
-    }
+```
+                        +-------------------------------------+
+                        |     Customer / Operational Agent    |
+                        +------------------+------------------+
+                                           |
+                                           v
+                             [ Parcel Booking / Dispatch ]
+                                           |
+                                           v
+                         +-----------------------------------+
+                         |             Sender__c             |
+                         |  (Name, Address, Phone, Email)    |
+                         +-----------------+-----------------+
+                                           |
+                         +-----------------+-----------------+
+                         | (1:N Lookup)                      | (1:N Lookup)
+                         v                                   v
+             +-----------------------+           +-----------------------+
+             |       Parcel__c       |           |      Receiver__c      |
+             |  AutoNumber: P-{000}  |           | (Address, Contact,    |
+             |  Status, Weight, Date |           |  Email, Linked Parcel)|
+             +-----------+-----------+           +-----------------------+
+                         |
+                         | (1:N Lookup)
+                         v
+             +-----------------------+
+             |      Delivery__c      |
+             |  Geolocation Lat/Long |
+             |  Target Delivery Date |
+             +-----------------------+
+                         |
+                         +-----------------------+
+                                                 |
+                                                 v
+                                   [ Parcel_Details Auto-Launched Flow ]
+                                                 |
+                                  +--------------+--------------+
+                                  |                             |
+                                  v                             v
+                     (Query: Parcel_ID__c == ids)    [ Output String Payload ]
+                                                                |
+                                                                v
+                                                 [ Formatted Tracking Card ]
+                                                 - Parcel Name
+                                                 - Parcel ID (P-001)
+                                                 - Status (In Transit)
+                                                 - Weight (1.75 kg)
+                                                 - Estimated Delivery Date
 ```
 
-### 2.2 Data Model & Security Specifications
-The relational mapping was designed according to the core enterprise requirements:
+---
 
-![Data Model and Security Architecture](../assets/screenshots/data_model_specs.png)
+## 2. System Screenshots & Live Demonstration
+
+The following screenshots are captured directly from the live Salesforce Developer Edition environment, showcasing the deployed metadata, operational data, and execution outputs.
+
+### 2.1 Parcel Management & Live List View
+
+The system manages end-to-end package lifecycles with real-time status tracking, package weight in kilograms, estimated arrival dates, and direct relationships to registered senders.
+
+#### Parcels All List View
+Displays active shipment records (`P-001` and `P-002`) within Salesforce Lightning Experience with standard actions (New, Import, Change Owner, Printable View):
+
+![Parcels List View](../assets/screenshots/p1_parcels_list_view.png)
+
+* **Record 1**: `Electronics Gadget` | **Parcel ID**: `P-001` | **Status**: `In Transit` | **Weight**: `1.75 kg` | **Sender**: `John Doe`
+* **Record 2**: `Fashion Apparel` | **Parcel ID**: `P-002` | **Status**: `Out for Delivery` | **Weight**: `0.85 kg` | **Sender**: `John Doe`
 
 ---
 
-## 3. Data Dictionary & Custom Metadata Specifications
+### 2.2 Parcel Record Detail
 
-### 3.1 `Parcel__c` (Parcel Object)
-* **API Name:** `Parcel__c`
-* **Label / Plural:** Parcel / Parcels
-* **Record Name:** `Parcel Name` (Data Type: Text)
-* **Sharing Model:** Read/Write | Reports & Search Enabled
+Each parcel record captures unique auto-numbered tracking identifiers, customer-assigned package labels, system audit trail, and linked logistics records.
 
-| Field Label | API Name | Data Type | Description / Options |
-| :--- | :--- | :--- | :--- |
-| **Parcel ID** | `Parcel_ID__c` | AutoNumber | Display Format: `P-{000}` (Starting Number: 1) |
+#### Parcel Detail Record (`Electronics Gadget`)
+Shows the individual record detail view, owner assignment, creation timestamps, and quick action integration in Salesforce Lightning:
+
+![Parcel Detail Record](../assets/screenshots/p2_parcel_record_detail.png)
+
+---
+
+### 2.3 Process Automation: Flow Builder Canvas
+
+Automated business logic retrieves parcel records dynamically and formats a structured response message for tracking inquiries without manual agent lookup.
+
+#### `Parcel_Details` Auto-Launched Flow Canvas
+Visual representation of the execution path:
+1. **Start**: Auto-Launched Flow trigger receiving the input variable `ids` (e.g., `"P-001"`).
+2. **Get Records (`Get_Parcel_Records`)**: Queries `Parcel__c` where `Parcel_ID__c == {!ids}`.
+3. **Assignment (`Assignment_Outputs`)**: Concatenates record fields into the formatted tracking string payload `{!Output}`.
+4. **End**: Returns the prepared payload to the calling service or interface.
+
+![Flow Builder Canvas](../assets/screenshots/p3_flow_builder.png)
+
+---
+
+### 2.4 Active Flow Definitions in Setup
+
+Displays the deployed unmanaged flow configured and active in Salesforce Setup under Process Automation:
+
+![Salesforce Flows List in Setup](../assets/screenshots/p4_flows_setup_list.png)
+
+* **Flow Label**: `Parcel Details`
+* **Process Type**: `Autolaunched Flow`
+* **Package State**: `Unmanaged`
+* **Created / Modified By**: `Viswanathan R`
+
+---
+
+### 2.5 Security & Access Management: Permission Sets
+
+Granular object and field permissions ensure logistics operators and automation accounts interact securely with parcel records.
+
+#### `Swift_Ship` Permission Set in Setup
+Configured under Setup > Users > Permission Sets to provide controlled CRUD access to all four custom objects:
+
+![Permission Sets in Setup](../assets/screenshots/p5_permission_set.png)
+
+* **Permission Set Name**: `Swift Ship` (`Swift_Ship`)
+* **Description**: `Permission set for SwiftShip Tracker parcel operations`
+* **Assigned Object Permissions**: `Parcel__c` (Read/Create/Edit), `Delivery__c` (Read/Create/Edit), `Sender__c` (Read/Create/Edit), `Receiver__c` (Read/Create/Edit).
+
+---
+
+### 2.6 Apex Execution & Live Tracking Output
+
+The tracking automation was verified by running anonymous Apex through the Salesforce CLI against the live target organization (`00Dg800000JuJGLEA3`):
+
+#### CLI Execution Log & Flow Response
+Direct terminal execution confirming compilation, execution, and structured payload return:
+
+![Apex Execution Log](../assets/screenshots/p6_apex_execution.png)
+
+* **Command**: `sf apex run --file scripts/apex/test_flow.apex`
+* **Compilation**: `Compiled successfully.`
+* **Execution Status**: `Executed successfully (Status 0).`
+* **Debug Output**: Formatted tracking update string returned for `P-001` with zero runtime errors.
+
+---
+
+## 3. Data Model & Custom Objects
+
+### 3.1 `Parcel__c` (Custom Object)
+Stores core shipment details, statuses, weights, and relational sender links.
+
+| Field Label | Field API Name | Data Type | Description |
+|:---|:---|:---|:---|
+| **Parcel Name** | `Name` | Text(80) | Descriptive label of the parcel |
+| **Parcel ID** | `Parcel_ID__c` | AutoNumber | Display Format: `P-{000}` (Starts at 1) |
 | **Status** | `Status__c` | Picklist | `Booked`, `In Transit`, `Out for Delivery`, `Delivered` |
-| **Weight** | `Weight__c` | Number(18, 2) | Weight of Parcel in Kilograms |
-| **Estimated Delivery** | `Estimated_Delivery_Date__c` | Date | Expected delivery date |
-| **Sender** | `Sender__c` | Lookup(`Sender__c`) | Associated Sender record |
+| **Weight** | `Weight__c` | Number(18, 2) | Package weight in kilograms (kg) |
+| **Estimated Delivery Date** | `Estimated_Delivery_Date__c` | Date | Projected package delivery date |
+| **Sender** | `Sender__c` | Lookup(`Sender__c`) | Associated sender profile |
 
 ---
 
-### 3.2 `Delivery__c` (Delivery Object)
-* **API Name:** `Delivery__c`
-* **Label / Plural:** Delivery / Deliveries
-* **Record Name:** `DeliveryName` (Data Type: Text)
+### 3.2 `Delivery__c` (Custom Object)
+Captures real-time route locations and delivery checkpoints.
 
-| Field Label | API Name | Data Type | Description |
-| :--- | :--- | :--- | :--- |
+| Field Label | Field API Name | Data Type | Description |
+|:---|:---|:---|:---|
+| **Delivery Name** | `Name` | Text(80) | Delivery run identifier (e.g., `Delivery DL-101`) |
 | **Current Location** | `Current_Location__c` | Geolocation | Latitude and Longitude coordinates (Decimal, Scale 6) |
-| **Estimated Delivery** | `Estimated_Delivery_Date__c` | Date | Target delivery completion date |
-| **Sender** | `Sender__c` | Lookup(`Sender__c`) | Associated Sender |
-| **Parcel** | `Parcel__c` | Lookup(`Parcel__c`) | Linked Parcel being delivered |
+| **Estimated Delivery Date** | `Estimated_Delivery_Date__c` | Date | Expected delivery date |
+| **Sender** | `Sender__c` | Lookup(`Sender__c`) | Linked sender |
+| **Parcel** | `Parcel__c` | Lookup(`Parcel__c`) | Associated parcel |
 
 ---
 
-### 3.3 `Sender__c` (Sender Object)
-* **API Name:** `Sender__c`
-* **Label / Plural:** Sender / Senders
-* **Record Name:** `SenderName` (Data Type: Text)
+### 3.3 `Sender__c` (Custom Object)
+Stores sender contact credentials and dispatch location coordinates.
 
-| Field Label | API Name | Data Type | Description |
-| :--- | :--- | :--- | :--- |
-| **Sender Address** | `Sender_Adress__c` | Geolocation | Latitude and Longitude coordinates |
-| **Sender Contact** | `Sende_Contact__c` | Phone | Primary contact phone number |
-| **Sender Email** | `Sender_Email__c` | Email | Email address for delivery confirmations |
-
----
-
-### 3.4 `Receiver__c` (Receiver Object)
-* **API Name:** `Receiver__c`
-* **Label / Plural:** Receiver / Receivers
-* **Record Name:** `ReceiverName` (Data Type: Text)
-
-| Field Label | API Name | Data Type | Description |
-| :--- | :--- | :--- | :--- |
-| **Receiver's Address** | `Receiver_Adress__c` | Geolocation | Destination coordinates |
-| **Receiver Contact** | `Receiver_Contact__c` | Phone | Contact phone number of recipient |
-| **Receiver Email** | `Receiver_Email__c` | Email | Recipient notification email |
-| **Sender** | `Sender__c` | Lookup(`Sender__c`) | Connected Sender |
-| **Parcel** | `Parcel__c` | Lookup(`Parcel__c`) | Associated Parcel record |
+| Field Label | Field API Name | Data Type | Description |
+|:---|:---|:---|:---|
+| **Sender Name** | `Name` | Text(80) | Full name / business name of sender |
+| **Sender Address** | `Sender_Adress__c` | Geolocation | Origin coordinates (Latitude / Longitude) |
+| **Sender Contact** | `Sende_Contact__c` | Phone | Primary contact telephone number |
+| **Sender Email** | `Sender_Email__c` | Email | Confirmation and dispatch alert email |
 
 ---
 
-## 4. Security & Access Management
+### 3.4 `Receiver__c` (Custom Object)
+Maintains destination address coordinates and recipient notification channels.
 
-### 4.1 Permission Set: `Swift_Ship`
-* **Permission Set Name:** `Swift_Ship`
-* **Assigned Object Permissions:**
-  * `Parcel__c`: Read, Create, Edit
-  * `Delivery__c`: Read, Create, Edit
-  * `Sender__c`: Read, Create, Edit
-  * `Receiver__c`: Read, Create, Edit
-* **Field-Level Security (FLS):**
-  * Read/Edit access enabled across all operational fields.
-  * `Parcel_ID__c`: Read-only (system generated auto-number).
-* **Target Users:** System Administrator and `EinsteinAgentUser`.
+| Field Label | Field API Name | Data Type | Description |
+|:---|:---|:---|:---|
+| **Receiver Name** | `Name` | Text(80) | Recipient full name |
+| **Receiver's Address** | `Receiver_Adress__c` | Geolocation | Destination coordinates (Latitude / Longitude) |
+| **Receiver Contact** | `Receiver_Contact__c` | Phone | Contact telephone number |
+| **Receiver Email** | `Receiver_Email__c` | Email | Delivery arrival alert email |
+| **Sender** | `Sender__c` | Lookup(`Sender__c`) | Connected sender |
+| **Parcel** | `Parcel__c` | Lookup(`Parcel__c`) | Linked package |
 
 ---
 
-## 5. Automation Architecture: Flow Builder
+## 4. Process Automation & Flow Logic
 
-### 5.1 Auto-Launched Flow: `Parcel_Details`
-* **Flow API Name:** `Parcel_Details`
-* **Type:** Auto-Launched Flow (No Trigger)
-* **Status:** Active
+### Auto-Launched Flow: `Parcel_Details`
+* **API Name**: `Parcel_Details`
+* **Trigger**: None (Invoked via Apex, REST API, or Agent Actions)
+* **Status**: Active
 
-#### Flow Diagram & Execution Sequence:
-```
-[Start]
-   │
-   ▼
-[Get Records: Get_Parcel_Records]
-   Query: Parcel__c WHERE Parcel_ID__c == {!ids}
-   Sort / Limit: First Record Only
-   │
-   ▼
-[Assignment: Assignment_Outputs]
-   Variable: {!Output}
-   Operator: Equals
-   Value: Formatted Tracking Template
-   │
-   ▼
-[End]
-```
+#### Flow Variables
+* **`ids`** (`String`, Input): Accepts the target Parcel ID string (e.g., `'P-001'`).
+* **`Output`** (`String`, Output): Returns the generated notification card text.
 
-#### Variables:
-* **`ids` (Input Variable):**
-  * Data Type: `String`
-  * Available for Input: `true`
-  * Purpose: Receives the Parcel ID query parameter (e.g. `"P-001"`).
-* **`Output` (Output Variable):**
-  * Data Type: `String`
-  * Available for Output: `true`
-  * Purpose: Returns the structured response payload back to the Agentforce runtime.
-
-#### Response Output Format:
+#### Formatted Tracking Output Template
 ```text
 📦 Parcel Tracking Update
 - Parcel Name: {!Get_Parcel_Records.Name}
@@ -199,114 +227,44 @@ The relational mapping was designed according to the core enterprise requirement
 
 ---
 
-## 6. Verification & Test Execution Results
+## 5. Security & Access Control
 
-### 6.1 Real-Time Salesforce UI Verification
-Test shipments `P-001` and `P-002` actively deployed, stored, and displayed in Salesforce Lightning:
-
-![Parcels List View in Salesforce](../assets/screenshots/parcels_list_view.png)
-
-### 6.2 Test Data Created in Target Org
-
-| Object | Record ID | Identifier / Name | Key Field Values |
-| :--- | :--- | :--- | :--- |
-| `Sender__c` | `a0Bg800000P3PLHEA3` | John Doe | Email: `sender.swiftship@example.com`, Phone: `9876543210` |
-| `Parcel__c` | `a09g800000L8YlBAAV` | Electronics Gadget | **Parcel ID:** `P-001`, **Status:** `In Transit`, **Weight:** `1.75 kg` |
-| `Parcel__c` | `a09g800000L8YlCAAV` | Fashion Apparel | **Parcel ID:** `P-002`, **Status:** `Out for Delivery`, **Weight:** `0.85 kg` |
-| `Receiver__c` | `a0Ag8000005BMC1EAO` | Jane Smith | Email: `receiver.swiftship@example.com`, Linked to `P-001` |
-| `Delivery__c` | `a08g800000Vm6VtAAJ` | Delivery DL-101 | Geolocation: `(13.0827, 80.2707)`, Linked to `P-001` |
+### Permission Set: `Swift_Ship`
+* **Target Users**: Logistics Administrators, Couriers, and Integration/Agent Users.
+* **Object Permissions**:
+  * `Parcel__c`: Read, Create, Edit
+  * `Delivery__c`: Read, Create, Edit
+  * `Sender__c`: Read, Create, Edit
+  * `Receiver__c`: Read, Create, Edit
+* **Field-Level Security (FLS)**:
+  * Full Read and Edit permissions on all operational fields.
+  * System Auto-Number `Parcel_ID__c` is protected as **Read-Only**.
 
 ---
 
-### 6.3 Flow Execution Logs (Real Salesforce Runtime)
+## 6. Verification & Test Execution Logs
 
-#### Test Case 1: Query Parcel ID `P-001`
+### Anonymous Apex Test Script (`scripts/apex/test_flow.apex`)
 ```apex
 Map<String, Object> inputs = new Map<String, Object>();
 inputs.put('ids', 'P-001');
 Flow.Interview.Parcel_Details myFlow = new Flow.Interview.Parcel_Details(inputs);
 myFlow.start();
 String result = (String) myFlow.getVariableValue('Output');
+System.debug('=== SWIFTSHIP FLOW OUTPUT START ===');
+System.debug(result);
+System.debug('=== SWIFTSHIP FLOW OUTPUT END ===');
 ```
-**Output Log:**
+
+**Live Runtime Result**:
 ```text
+=== SWIFTSHIP FLOW OUTPUT START ===
 📦 Parcel Tracking Update
 - Parcel Name: Electronics Gadget
 - Parcel ID: P-001
 - Status: In Transit
 - Weight: 1.75
 - Estimated Delivery Date: 3 October 2026
+=== SWIFTSHIP FLOW OUTPUT END ===
 ```
-* **Result:** **PASSED** (100% matched)
-
----
-
-#### Test Case 2: Query Parcel ID `P-002`
-```apex
-Map<String, Object> inputs = new Map<String, Object>();
-inputs.put('ids', 'P-002');
-Flow.Interview.Parcel_Details myFlow = new Flow.Interview.Parcel_Details(inputs);
-myFlow.start();
-String result = (String) myFlow.getVariableValue('Output');
-```
-**Output Log:**
-```text
-📦 Parcel Tracking Update
-- Parcel Name: Fashion Apparel
-- Parcel ID: P-002
-- Status: Out for Delivery
-- Weight: 0.85
-- Estimated Delivery Date: 1 October 2026
-```
-* **Result:** **PASSED** (100% matched)
-
----
-
-## 7. Project Artifacts & Source Code Structure
-
-All Salesforce metadata components have been structured under standard SFDX project format:
-
-```text
-swiftship/
-├── .forceignore
-├── .gitignore
-├── README.md
-├── sfdx-project.json
-├── assets/
-│   └── screenshots/
-│       ├── parcels_list_view.png
-│       ├── naan_mudhalvan_portal.png
-│       ├── data_model_specs.png
-│       └── project_milestones.png
-├── docs/
-│   ├── SwiftShip_Tracker_Project_Documentation.md
-│   └── SwiftShip_Tracker_Reference.pdf
-├── force-app/main/default/
-│   ├── applications/
-│   │   └── SwiftShip_Tracker.app-meta.xml
-│   ├── flows/
-│   │   └── Parcel_Details.flow-meta.xml
-│   ├── objects/
-│   │   ├── Delivery__c/
-│   │   ├── Parcel__c/
-│   │   ├── Receiver__c/
-│   │   └── Sender__c/
-│   ├── permissionsets/
-│   │   └── Swift_Ship.permissionset-meta.xml
-│   └── tabs/
-│       ├── Delivery__c.tab-meta.xml
-│       ├── Parcel__c.tab-meta.xml
-│       ├── Receiver__c.tab-meta.xml
-│       └── Sender__c.tab-meta.xml
-└── scripts/
-    ├── apex/
-    │   ├── create_sample_data.apex
-    │   └── test_flow.apex
-    └── soql/
-        └── parcel_query.soql
-```
-
----
-
-## 8. Conclusion & Evaluation Notes
-The core business logic, relational schemas, custom UI tabs, security layer, and automated flow execution for **SwiftShip Tracker** have been successfully implemented, deployed, and verified in Salesforce. The system provides an extensible foundation for AI-assisted customer service and seamless parcel tracking.
+* **Execution Status**: Success (0 errors, 100% field population).
