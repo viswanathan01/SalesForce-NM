@@ -6,11 +6,13 @@
     </brand>
     <description>Parcel Management Portal for SwiftShip Tracker</description>
     <formFactors>Large</formFactors>
+    <formFactors>Small</formFactors>
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <label>SwiftShip Tracker</label>
     <navType>Standard</navType>
+    <tabs>standard-home</tabs>
     <tabs>Parcel__c</tabs>
     <tabs>Delivery__c</tabs>
     <tabs>Sender__c</tabs>

@@ -138,4 +138,22 @@
         <field>Receiver__c.Parcel__c</field>
         <readable>true</readable>
     </fieldPermissions>
+
+    <!-- Tab Settings -->
+    <tabSettings>
+        <tab>Parcel__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Delivery__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Sender__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Receiver__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
 </PermissionSet>
