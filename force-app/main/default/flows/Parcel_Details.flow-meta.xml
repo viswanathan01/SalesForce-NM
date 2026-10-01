@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>67.0</apiVersion>
+    <assignments>
+        <name>Assignment_Outputs</name>
+        <label>Assignment Outputs</label>
+        <locationX>176</locationX>
+        <locationY>242</locationY>
+        <assignmentItems>
+            <assignToReference>Output</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Formatted_Tracking_Update</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <description>Auto-launched flow to retrieve parcel tracking details by Parcel ID</description>
+    <environments>Default</environments>
+    <interviewLabel>Parcel Details {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Parcel Details</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Parcel_Records</name>
+        <label>Get Parcel Records</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assignment_Outputs</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Parcel_ID__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ids</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Parcel__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Parcel_Records</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>Formatted_Tracking_Update</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>📦 Parcel Tracking Update
+- Parcel Name: {!Get_Parcel_Records.Name}
+- Parcel ID: {!Get_Parcel_Records.Parcel_ID__c}
+- Status: {!Get_Parcel_Records.Status__c}
+- Weight: {!Get_Parcel_Records.Weight__c}
+- Estimated Delivery Date: {!Get_Parcel_Records.Estimated_Delivery_Date__c}</text>
+    </textTemplates>
+    <variables>
+        <name>ids</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Output</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

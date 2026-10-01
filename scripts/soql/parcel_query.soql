@@ -1,0 +1,5 @@
+// SwiftShip Tracker SOQL Query
+// Fetch all parcels with linked sender and status details
+SELECT Id, Name, Parcel_ID__c, Status__c, Weight__c, Estimated_Delivery_Date__c, Sender__r.Name 
+FROM Parcel__c 
+ORDER BY Parcel_ID__c ASC
