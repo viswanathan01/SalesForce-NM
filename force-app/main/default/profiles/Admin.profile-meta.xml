@@ -878,4 +878,16 @@
         <tab>Receiver__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
+    <layoutAssignments>
+        <layout>Parcel__c-Parcel Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Delivery__c-Delivery Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Sender__c-Sender Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Receiver__c-Receiver Layout</layout>
+    </layoutAssignments>
 </Profile>
