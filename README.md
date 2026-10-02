@@ -19,8 +19,9 @@ A comprehensive, enterprise-grade **Salesforce Parcel Tracking and Autonomous Lo
 * **Institution:** **Alpha College of Engineering, Thirumazhisai, Chennai** *(Approved by AICTE and Affiliated to Anna University)*
 * **Naan Mudhalvan Team ID:** `6ab4dab10fc666a751b55876`
 * **Live Salesforce Org ID:** `00Dak00001IgVqvEAF` (Developer Edition — Agentforce Enabled)
-* **Official Word Report (.docx):** [docs/SwiftShip_Tracker_NM_Report.docx](docs/SwiftShip_Tracker_NM_Report.docx)
-* **Official PDF Report (.pdf):** [docs/SwiftShip_Tracker_NM_Report.pdf](docs/SwiftShip_Tracker_NM_Report.pdf)
+* **Official PDF Report (.pdf):** [SwiftShip_Tracker_NM_Report.pdf](SwiftShip_Tracker_NM_Report.pdf) *(also in [docs/](docs/SwiftShip_Tracker_NM_Report.pdf))*
+* **Official Word Report (.docx):** [SwiftShip_Tracker_NM_Report.docx](SwiftShip_Tracker_NM_Report.docx) *(also in [docs/](docs/SwiftShip_Tracker_NM_Report.docx))*
+* **Salesforce Implementation Screenshots:** [salesforce_screenshots/](salesforce_screenshots/)
 * **Detailed Technical Documentation:** [docs/SwiftShip_Tracker_Project_Documentation.md](docs/SwiftShip_Tracker_Project_Documentation.md)
 
 ### Team Members
@@ -326,6 +327,8 @@ swiftship/
 ├── .gitignore
 ├── README.md                                   <-- Main Project Overview & Architecture
 ├── sfdx-project.json                           <-- SFDX Project Config (API v67.0)
+├── SwiftShip_Tracker_NM_Report.pdf             <-- Official Evaluator PDF Report (Direct View)
+├── SwiftShip_Tracker_NM_Report.docx            <-- Official Formatted Word Report
 ├── assets/
 │   ├── branding/
 │   │   └── alpha_college_logo.png              <-- Alpha College Institutional Crest
@@ -337,26 +340,28 @@ swiftship/
 │   │   ├── d5_data_flow_diagram.png
 │   │   ├── d6_solution_architecture.png
 │   │   └── d7_sprint_velocity_burndown.png
-│   └── screenshots/                            <-- Official Live Evidence (ss01 - ss14)
-│       ├── ss01_parcels_list_view.png
-│       ├── ss02_deliveries_list_view.png
-│       ├── ss03_receivers_list_view.png
-│       ├── ss04_obj_mgr_parcel.png
-│       ├── ss05_obj_mgr_delivery.png
-│       ├── ss06_obj_mgr_sender.png
-│       ├── ss07_obj_mgr_receiver.png
-│       ├── ss08_agentforce_agents_setup.png
-│       ├── ss09_agentforce_builder_topic_action.png
-│       ├── ss10_agentforce_live_test_grounded.png
-│       ├── ss11_flows_setup_list.png
-│       ├── ss12_flow_builder_debug_canvas.png
-│       ├── ss13_permission_set.png
-│       └── ss14_parcel_record_detail.png
+│   └── screenshots/                            <-- Markdown Document Assets (ss01 - ss14)
+├── salesforce_screenshots/                     <-- Dedicated Screenshots Directory (ss01 - ss14)
+│   ├── README.md                               <-- Screenshot Index & Visual Gallery
+│   ├── ss01_parcels_list_view.png
+│   ├── ss02_deliveries_list_view.png
+│   ├── ss03_receivers_list_view.png
+│   ├── ss04_obj_mgr_parcel.png
+│   ├── ss05_obj_mgr_delivery.png
+│   ├── ss06_obj_mgr_sender.png
+│   ├── ss07_obj_mgr_receiver.png
+│   ├── ss08_agentforce_agents_setup.png
+│   ├── ss09_agentforce_builder_topic_action.png
+│   ├── ss10_agentforce_live_test_grounded.png
+│   ├── ss11_flows_setup_list.png
+│   ├── ss12_flow_builder_debug_canvas.png
+│   ├── ss13_permission_set.png
+│   └── ss14_parcel_record_detail.png
 ├── config/
 │   └── project-scratch-def.json
 ├── docs/
-│   ├── SwiftShip_Tracker_NM_Report.docx        <-- Official Formatted Word Report
-│   ├── SwiftShip_Tracker_NM_Report.pdf         <-- Official Formatted PDF Report
+│   ├── SwiftShip_Tracker_NM_Report.docx
+│   ├── SwiftShip_Tracker_NM_Report.pdf
 │   ├── SwiftShip_Tracker_Project_Documentation.md
 │   └── SwiftShip_Tracker_Reference.pdf
 ├── force-app/main/default/
