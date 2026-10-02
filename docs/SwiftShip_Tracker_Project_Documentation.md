@@ -26,7 +26,7 @@
 
 | Role in Project | Student Name | Register Number | College Email ID |
 | :--- | :--- | :--- | :--- |
-| **Team Lead** | **Viswanathan R** | `210123205033` | `nviswa192.6880cfe3bfa5@agentforce.com` |
+| **Team Lead** | **Viswanathan R** | `210123205033` | `nviswa192@gmail.com` |
 | **Team Member** | **Srilekha M** | `210123205029` | `srims0912@gmail.com` |
 | **Team Member** | **Sindhu S** | `210123205028` | `sindhubava05@gmail.com` |
 | **Team Member** | **Pavadharani R** | `210123205015` | `rishvibommika@gmail.com` |
