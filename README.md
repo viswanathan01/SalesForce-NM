@@ -10,6 +10,22 @@ A comprehensive, enterprise-grade **Salesforce Parcel Tracking and Autonomous Lo
 
 ---
 
+## 👥 Project Team Details (Naan Mudhalvan — TNSDC)
+
+| Role in Project | Student Name | Register / Roll Number |
+| :--- | :--- | :--- |
+| **Team Lead** | **Viswanathan R** | `210123205033` |
+| **Team Member** | **Srilekha M** | `210123205029` |
+| **Team Member** | **Sindhu S** | `210123205028` |
+| **Team Member** | **Pavadharani R** | `210123205015` |
+| **Team Member** | **Santhosh Kumar S** | `210123205024` |
+
+* **Live Salesforce Org ID:** `00Dak00001IgVqvEAF` (Developer Edition — Agentforce Enabled)
+* **Official Word Report (.docx):** [docs/SwiftShip_Tracker_NM_Report.docx](docs/SwiftShip_Tracker_NM_Report.docx)
+* **Official PDF Report (.pdf):** [docs/SwiftShip_Tracker_NM_Report.pdf](docs/SwiftShip_Tracker_NM_Report.pdf)
+
+---
+
 ## 📑 Table of Contents
 - [System Architecture Overview](#-system-architecture-overview)
 - [System Screenshots & Live Demonstration](#-system-screenshots--live-demonstration)
