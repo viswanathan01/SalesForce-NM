@@ -1,49 +1,55 @@
 # 📦 SwiftShip Tracker — Autonomous Parcel Management & Agentforce AI System
 
+<p align="center">
+  <img src="assets/branding/alpha_college_logo.png" alt="Alpha College of Engineering" width="480" />
+</p>
+
 [![Salesforce](https://img.shields.io/badge/Platform-Salesforce%20Lightning-blue?logo=salesforce)](https://www.salesforce.com)
 [![Agentforce](https://img.shields.io/badge/AI-Agentforce%20Autonomous%20Agent-blueviolet)](https://www.salesforce.com/agentforce/)
 [![Automation](https://img.shields.io/badge/Automation-Auto--Launched%20Flow-orange)](#-process-automation--flow-builder)
 [![Security](https://img.shields.io/badge/Security-Permission%20Sets%20%7C%20FLS-green)](#-security--access-control)
-[![Architecture](https://img.shields.io/badge/Architecture-Logistics%20CRM-purple)](#-system-architecture-overview)
+[![Naan Mudhalvan](https://img.shields.io/badge/Program-Naan%20Mudhalvan%20%7C%20TNSDC-red)](#-project-team--institution-details)
 
 A comprehensive, enterprise-grade **Salesforce Parcel Tracking and Autonomous Logistics Management System** powered by **Salesforce Agentforce** and **Flow Builder**. Built for courier and logistics ecosystems, the solution centralizes shipment records, enables natural-language conversational parcel tracking through an autonomous AI Service Agent, automates real-time tracking retrieval via Salesforce Flows, and enforces granular role-based access control.
 
 ---
 
-## 👥 Project Team Details (Naan Mudhalvan — TNSDC)
+## 👥 Project Team & Institution Details
 
-| Role in Project | Student Name | Register / Roll Number |
-| :--- | :--- | :--- |
-| **Team Lead** | **Viswanathan R** | `210123205033` |
-| **Team Member** | **Srilekha M** | `210123205029` |
-| **Team Member** | **Sindhu S** | `210123205028` |
-| **Team Member** | **Pavadharani R** | `210123205015` |
-| **Team Member** | **Santhosh Kumar S** | `210123205024` |
-
+* **Institution:** **Alpha College of Engineering, Thirumazhisai, Chennai** *(Approved by AICTE and Affiliated to Anna University)*
+* **Naan Mudhalvan Team ID:** `6ab4dab10fc666a751b55876`
 * **Live Salesforce Org ID:** `00Dak00001IgVqvEAF` (Developer Edition — Agentforce Enabled)
 * **Official Word Report (.docx):** [docs/SwiftShip_Tracker_NM_Report.docx](docs/SwiftShip_Tracker_NM_Report.docx)
 * **Official PDF Report (.pdf):** [docs/SwiftShip_Tracker_NM_Report.pdf](docs/SwiftShip_Tracker_NM_Report.pdf)
+* **Detailed Technical Documentation:** [docs/SwiftShip_Tracker_Project_Documentation.md](docs/SwiftShip_Tracker_Project_Documentation.md)
+
+### Team Members
+
+| Role in Project | Student Name | Register Number | College Email ID |
+| :--- | :--- | :--- | :--- |
+| **Team Lead** | **Viswanathan R** | `210123205033` | `nviswa192.6880cfe3bfa5@agentforce.com` |
+| **Team Member** | **Srilekha M** | `210123205029` | `srims0912@gmail.com` |
+| **Team Member** | **Sindhu S** | `210123205028` | `sindhubava05@gmail.com` |
+| **Team Member** | **Pavadharani R** | `210123205015` | `rishvibommika@gmail.com` |
+| **Team Member** | **Santhosh Kumar S** | `210123205024` | `mrsanthosh3345@gmail.com` |
 
 ---
 
 ## 📑 Table of Contents
 - [System Architecture Overview](#-system-architecture-overview)
-- [System Screenshots & Live Demonstration](#-system-screenshots--live-demonstration)
-  - [1. Agentforce AI Live Conversational Tracking](#1-agentforce-ai-live-conversational-tracking)
-  - [2. Agentforce Builder Topic & Action Configuration](#2-agentforce-builder-topic--action-configuration)
-  - [3. Parcel Management & Live List View](#3-parcel-management--live-list-view)
-  - [4. Parcel Record Detail](#4-parcel-record-detail)
-  - [5. Process Automation: Flow Builder Canvas](#5-process-automation-flow-builder-canvas)
-  - [6. Active Flow Definitions in Setup](#6-active-flow-definitions-in-setup)
-  - [7. Security & Access Management: Permission Sets](#7-security--access-management-permission-sets)
-  - [8. Apex Execution & Live Tracking Output](#8-apex-execution--live-tracking-output)
-- [Data Model & Custom Objects](#-data-model--custom-objects)
-- [Process Automation & Flow Logic](#-process-automation--flow-logic)
+- [System Screenshots & Live Implementation Evidence](#-system-screenshots--live-implementation-evidence)
+  - [1. Agentforce Autonomous AI Agent](#1-agentforce-autonomous-ai-agent)
+  - [2. Custom Logistics Application & Operational Data](#2-custom-logistics-application--operational-data)
+  - [3. Process Automation: Flow Builder & Execution](#3-process-automation-flow-builder--execution)
+  - [4. Security & Access Control: Permission Sets](#4-security--access-control-permission-sets)
+  - [5. Custom Object Manager Schemas](#5-custom-object-manager-schemas)
+- [Design Thinking & Architectural Diagrams](#-design-thinking--architectural-diagrams)
+- [Data Model & Custom Objects Schema](#-data-model--custom-objects-schema)
 - [Agentforce AI Agent Specifications](#-agentforce-ai-agent-specifications)
 - [Security & Access Control](#-security--access-control)
 - [Deployment & Setup Guide](#-deployment--setup-guide)
 - [Verification & Testing](#-verification--testing)
-- [Project Structure](#-project-structure)
+- [Project Directory Structure](#-project-directory-structure)
 
 ---
 
@@ -55,8 +61,8 @@ A comprehensive, enterprise-grade **Salesforce Parcel Tracking and Autonomous Lo
                         +------------------+------------------+
                                            |
                                            v
-                       [ Conversational Query / Live Chat ]
-                         "Where is my parcel P-001?"
+                        [ Conversational Query / Live Chat ]
+                          "Where is my parcel P-001?"
                                            |
                                            v
                         +-------------------------------------+
@@ -88,7 +94,7 @@ A comprehensive, enterprise-grade **Salesforce Parcel Tracking and Autonomous Lo
              +-----------------------+
                          |
                          v
-              [ Real-Time Formatted Response ]
+              [ Real-Time Grounded Response ]
               "Your parcel (Electronics Gadget, ID: P-001) 
                is currently in transit. The estimated delivery 
                date is October 4, 2026."
@@ -96,106 +102,97 @@ A comprehensive, enterprise-grade **Salesforce Parcel Tracking and Autonomous Lo
 
 ---
 
-## 📸 System Screenshots & Live Demonstration
+## 📸 System Screenshots & Live Implementation Evidence
 
-The following screenshots are captured directly from the live Salesforce Agentforce Developer Edition environment (`00Dak00001IgVqvEAF`), showcasing the AI Agent, deployed metadata, operational data, and execution outputs.
+All screenshots are captured directly from the live Salesforce Agentforce Developer Edition environment (`00Dak00001IgVqvEAF`), demonstrating full operational capability.
 
-### 1. Agentforce AI Live Conversational Tracking
+### 1. Agentforce Autonomous AI Agent
 
-Customers query the **Swift Tracker** autonomous AI agent in natural language. The agent identifies the intent, executes the underlying `Parcel Details` Flow Action, and generates a conversational response:
+Customers interact with the **Swift Tracker** autonomous AI agent in natural conversational English. The reasoning engine detects the parcel inquiry, autonomously triggers the `Parcel Details` Flow Action, and grounds the response using live CRM data.
 
-![Agentforce Live Chat Preview](assets/screenshots/p7_agentforce_chat_preview.png)
+| Live Grounded Reasoning & Output Trace | Agentforce Builder Topic `# Parcel Tracking` |
+| :---: | :---: |
+| ![Agentforce Live Test Grounded](assets/screenshots/ss10_agentforce_live_test_grounded.png) | ![Agentforce Builder Topic Action](assets/screenshots/ss09_agentforce_builder_topic_action.png) |
 
-* **User Prompt**: *"Where is my parcel P-001?"*
-* **Autonomous Agent Response**: *"Your parcel (Electronics Gadget, ID: P-001) is currently in transit. The estimated delivery date is October 4, 2026. Would you like more details about its shipment or need help with another parcel?"*
-
----
-
-### 2. Agentforce Builder Topic & Action Configuration
-
-Configured inside **Agentforce Builder** under the `Parcel Tracking` topic with custom reasoning instructions and flow action mapping:
-
-![Agentforce Builder Configuration](assets/screenshots/p8_agentforce_builder.png)
-
-* **Agent Name**: `Swift Tracker` (Version 1)
-* **Topic**: `# Parcel Tracking`
-* **Classification**: `Handles customer inquiries about parcel status, delivery updates, and tracking details using Parcel ID.`
-* **Action Available For Reasoning**: `Parcel Details` (Auto-Launched Flow).
+* **Active Agentforce Agents List in Setup:**
+  ![Agentforce Agents Setup List](assets/screenshots/ss08_agentforce_agents_setup.png)
 
 ---
 
-### 3. Parcel Management & Live List View
+### 2. Custom Logistics Application & Operational Data
 
-Displays active shipments (`P-001` and `P-002`) within Salesforce Lightning Experience with statuses, weights, estimated arrival dates, and sender links:
+The **SwiftShip Tracker** custom Lightning application provides operators and couriers with centralized views for tracking parcels, delivery checkpoints, and recipient information.
 
-![Parcels List View](assets/screenshots/p1_parcels_list_view.png)
+| All Parcels Active View (`P-001` through `P-004`) | All Deliveries View (with GPS Coordinates) |
+| :---: | :---: |
+| ![Parcels List View](assets/screenshots/ss01_parcels_list_view.png) | ![Deliveries List View](assets/screenshots/ss02_deliveries_list_view.png) |
 
-* **Record 1**: `Electronics Gadget` | **Parcel ID**: `P-001` | **Status**: `In Transit` | **Weight**: `1.75 kg` | **Sender**: `John Doe`
-* **Record 2**: `Fashion Apparel` | **Parcel ID**: `P-002` | **Status**: `Out for Delivery` | **Weight**: `0.85 kg` | **Sender**: `John Doe`
-
----
-
-### 4. Parcel Record Detail
-
-Each parcel record maintains auto-numbered identifiers (`P-{000}`), owner tracking, and relational references across the logistics data model:
-
-![Parcel Detail Record](assets/screenshots/p2_parcel_record_detail.png)
+| All Receivers View | Parcel Record Detail Page Layout |
+| :---: | :---: |
+| ![Receivers List View](assets/screenshots/ss03_receivers_list_view.png) | ![Parcel Record Detail](assets/screenshots/ss14_parcel_record_detail.png) |
 
 ---
 
-### 5. Process Automation: Flow Builder Canvas
+### 3. Process Automation: Flow Builder & Execution
 
-Visual representation of the `Parcel_Details` Auto-Launched Flow serving as the core Agent Action:
+The autolaunched Flow `Parcel_Details` handles deterministic data retrieval and formats responses back to the Agentforce runtime.
 
-![Flow Builder Canvas](assets/screenshots/p3_flow_builder.png)
-
-1. **Start**: Auto-Launched Flow receiving input parameter `ids` (e.g. `'P-001'`).
-2. **Get Records (`Get_Parcel_Records`)**: Queries `Parcel__c WHERE Parcel_ID__c == {!ids}`.
-3. **Assignment (`Assignment_Outputs`)**: Sets the formatted output string `{!Output}`.
-4. **End**: Returns structured tracking data to Agentforce.
+| Flow Builder Debug Canvas (Execution for `P-001`) | Active Flow Definitions in Setup |
+| :---: | :---: |
+| ![Flow Builder Debug Canvas](assets/screenshots/ss12_flow_builder_debug_canvas.png) | ![Flows Setup List](assets/screenshots/ss11_flows_setup_list.png) |
 
 ---
 
-### 6. Active Flow Definitions in Setup
+### 4. Security & Access Control: Permission Sets
 
-Displays the deployed unmanaged flow configured in Salesforce Setup under Process Automation:
+The `Swift_Ship` Permission Set enforces least-privilege access across the custom schema, granting CRUD permissions to both Human Administrators and the `EinsteinServiceAgent User`.
 
-![Salesforce Flows List in Setup](assets/screenshots/p4_flows_setup_list.png)
-
-* **Flow Label**: `Parcel Details`
-* **Process Type**: `Autolaunched Flow`
-* **Package State**: `Unmanaged`
+![Permission Set Assignments](assets/screenshots/ss13_permission_set.png)
 
 ---
 
-### 7. Security & Access Management: Permission Sets
+### 5. Custom Object Manager Schemas
 
-Configured under Setup > Users > Permission Sets to provide controlled CRUD access to all custom logistics objects:
+Four custom objects were engineered in Salesforce Object Manager with relational integrity and custom Geolocation fields:
 
-![Permission Sets in Setup](assets/screenshots/p5_permission_set.png)
+| Parcel Custom Object (`Parcel__c`) | Delivery Custom Object (`Delivery__c`) |
+| :---: | :---: |
+| ![Object Manager Parcel](assets/screenshots/ss04_obj_mgr_parcel.png) | ![Object Manager Delivery](assets/screenshots/ss05_obj_mgr_delivery.png) |
 
-* **Permission Set Name**: `Swift Ship` (`Swift_Ship`)
-* **Assigned Object Permissions**: `Parcel__c`, `Delivery__c`, `Sender__c`, `Receiver__c` (Read, Create, Edit).
-
----
-
-### 8. Apex Execution & Live Tracking Output
-
-Direct CLI verification of the Flow execution using anonymous Apex:
-
-![Apex Execution Log](assets/screenshots/p6_apex_execution.png)
-
-* **Command**: `sf apex run --file scripts/apex/test_flow.apex`
-* **Execution Status**: `Compiled & Executed successfully (Status 0).`
+| Sender Custom Object (`Sender__c`) | Receiver Custom Object (`Receiver__c`) |
+| :---: | :---: |
+| ![Object Manager Sender](assets/screenshots/ss06_obj_mgr_sender.png) | ![Object Manager Receiver](assets/screenshots/ss07_obj_mgr_receiver.png) |
 
 ---
 
-## 🗄️ Data Model & Custom Objects
+## 🎨 Design Thinking & Architectural Diagrams
+
+The project was conceptualized using Stanford d.school Design Thinking principles, progressing through Empathy Mapping, Ideation, Customer Journey Mapping, and Agile Sprints.
+
+| Empathy Map Canvas | Brainstorming & Ideation |
+| :---: | :---: |
+| ![Empathy Map](assets/diagrams/d1_empathy_map.png) | ![Brainstorming](assets/diagrams/d2_brainstorming.png) |
+
+| Customer Journey Map | Solution Requirements Traceability |
+| :---: | :---: |
+| ![Customer Journey Map](assets/diagrams/d3_customer_journey.png) | ![Solution Requirements](assets/diagrams/d4_solution_requirements.png) |
+
+| Data Flow Diagram (DFD Level 0 & 1) | Solution Architecture & Integration |
+| :---: | :---: |
+| ![Data Flow Diagram](assets/diagrams/d5_data_flow_diagram.png) | ![Solution Architecture](assets/diagrams/d6_solution_architecture.png) |
+
+| Agile Sprint Velocity & Burndown Chart |
+| :---: |
+| ![Sprint Velocity Burndown](assets/diagrams/d7_sprint_velocity_burndown.png) |
+
+---
+
+## 🗄️ Data Model & Custom Objects Schema
 
 ### 1. `Parcel__c` (Custom Object)
 Stores core shipment details, statuses, weights, and relational sender links.
 
-| Field Label | Field API Name | Data Type | Description |
+| Field Label | Field API Name | Data Type | Description / Constraints |
 |:---|:---|:---|:---|
 | **Parcel Name** | `Name` | Text(80) | Descriptive label of the parcel |
 | **Parcel ID** | `Parcel_ID__c` | AutoNumber | Display Format: `P-{000}` (Starts at 1) |
@@ -209,7 +206,7 @@ Stores core shipment details, statuses, weights, and relational sender links.
 ### 2. `Delivery__c` (Custom Object)
 Captures real-time route locations and delivery checkpoints.
 
-| Field Label | Field API Name | Data Type | Description |
+| Field Label | Field API Name | Data Type | Description / Constraints |
 |:---|:---|:---|:---|
 | **Delivery Name** | `Name` | Text(80) | Delivery run identifier (e.g., `Delivery DL-101`) |
 | **Current Location** | `Current_Location__c` | Geolocation | Latitude and Longitude coordinates (Decimal, Scale 6) |
@@ -222,7 +219,7 @@ Captures real-time route locations and delivery checkpoints.
 ### 3. `Sender__c` (Custom Object)
 Stores sender contact credentials and dispatch location coordinates.
 
-| Field Label | Field API Name | Data Type | Description |
+| Field Label | Field API Name | Data Type | Description / Constraints |
 |:---|:---|:---|:---|
 | **Sender Name** | `Name` | Text(80) | Full name / business name of sender |
 | **Sender Address** | `Sender_Adress__c` | Geolocation | Origin coordinates (Latitude / Longitude) |
@@ -234,7 +231,7 @@ Stores sender contact credentials and dispatch location coordinates.
 ### 4. `Receiver__c` (Custom Object)
 Maintains destination address coordinates and recipient notification channels.
 
-| Field Label | Field API Name | Data Type | Description |
+| Field Label | Field API Name | Data Type | Description / Constraints |
 |:---|:---|:---|:---|
 | **Receiver Name** | `Name` | Text(80) | Recipient full name |
 | **Receiver's Address** | `Receiver_Adress__c` | Geolocation | Destination coordinates (Latitude / Longitude) |
@@ -247,22 +244,30 @@ Maintains destination address coordinates and recipient notification channels.
 
 ## 🤖 Agentforce AI Agent Specifications
 
-* **Agent Name**: `Swift Tracker`
-* **Agent Role**: Autonomous Customer Service & Parcel Logistics Assistant
-* **Topic**: `Parcel Tracking`
-* **Classification Description**: `Handles customer inquiries about parcel status, delivery updates, and tracking details using Parcel ID.`
-* **Action Hook**: `Parcel Details` Flow
-* **Action Input**: `ids` (Parcel ID collected from conversation)
-* **Action Output**: `Output` (Formatted parcel tracking string rendered into dialogue)
+* **Agent Label:** `Swift Tracker`
+* **Developer Name:** `Swift_Tracker`
+* **Agent Type:** Autonomous Service Agent
+* **Version:** 1 (Active)
+* **Topic Label:** `# Parcel Tracking`
+* **Topic Classification Description:** Handles customer inquiries regarding parcel status, location updates, and estimated delivery dates using Parcel ID.
+* **Reasoning Instructions:**
+  > *"Your job is to assist users in tracking their parcels by collecting their Parcel ID and providing real-time shipment updates. When a user asks to track a parcel or provides a Parcel ID (such as P-001 or P-002), run the Parcel Details action with that Parcel ID and show the tracking update."*
+* **Linked Action:** `Parcel Details` (Invokes Auto-Launched Flow `Parcel_Details`)
+* **Input Parameter:** `ids` (String — Parcel ID captured from user dialogue)
+* **Output Parameter:** `Output` (String — Formatted tracking status message)
+* **Evaluation:** Fully Grounded
 
 ---
 
 ## 🔒 Security & Access Control
 
 ### Permission Set: `Swift_Ship`
-* **Target Users**: Logistics Operators, Couriers, and `EinsteinAgentUser`.
-* **Object Permissions**: `Parcel__c`, `Delivery__c`, `Sender__c`, `Receiver__c` (Read, Create, Edit).
-* **Field-Level Security (FLS)**: Full Read/Edit on all operational fields; Auto-Number `Parcel_ID__c` is **Read-Only**.
+* **Target Users:** Logistics Operators, Couriers, and `EinsteinServiceAgent User`.
+* **Object Permissions:** `Parcel__c`, `Delivery__c`, `Sender__c`, `Receiver__c` (Read, Create, Edit).
+* **Field-Level Security (FLS):** Full Read/Edit on all 17 custom fields; Auto-Number `Parcel_ID__c` is Read-Only.
+* **Assigned Users:**
+  1. `Viswanathan R` (System Administrator)
+  2. `EinsteinServiceAgent User` (`swift_tracker@00dak00001igvqv600852988.ext`)
 
 ---
 
@@ -301,27 +306,57 @@ sf apex run --file scripts/apex/test_flow.apex
 
 ---
 
-## 📂 Project Structure
+## 🧪 Verification & Testing
+
+| Test Case | Scenario | Input | Actual Output | Status |
+| :--- | :--- | :--- | :--- | :---: |
+| **TC-01** | Record Creation | `Electronics Gadget, 1.75 kg, P-001` | Record created with Auto-number `P-001` and `In Transit` | ✅ **PASSED** |
+| **TC-02** | Flow Execution | `ids = 'P-001'` | Returns `In Transit`, `1.75 kg`, `2026-10-04` | ✅ **PASSED** |
+| **TC-03** | Agentforce Reasoning | `"Where is my parcel P-001?"` | Transitions to `# Parcel Tracking` & runs action | ✅ **PASSED** |
+| **TC-04** | Grounded Generation | Flow Output | Polished, polite status update with exact ETA | ✅ **PASSED** |
+| **TC-05** | Security Boundary | Agent Execution Context | Successfully queries records without FLS faults | ✅ **PASSED** |
+
+---
+
+## 📂 Project Directory Structure
 
 ```
-.
+swiftship/
 ├── .forceignore
 ├── .gitignore
-├── README.md                               <-- Main Project Documentation
-├── sfdx-project.json                       <-- SFDX Project Config (API v67.0)
+├── README.md                                   <-- Main Project Overview & Architecture
+├── sfdx-project.json                           <-- SFDX Project Config (API v67.0)
+├── assets/
+│   ├── branding/
+│   │   └── alpha_college_logo.png              <-- Alpha College Institutional Crest
+│   ├── diagrams/                               <-- Design Thinking & Architecture
+│   │   ├── d1_empathy_map.png
+│   │   ├── d2_brainstorming.png
+│   │   ├── d3_customer_journey.png
+│   │   ├── d4_solution_requirements.png
+│   │   ├── d5_data_flow_diagram.png
+│   │   ├── d6_solution_architecture.png
+│   │   └── d7_sprint_velocity_burndown.png
+│   └── screenshots/                            <-- Official Live Evidence (ss01 - ss14)
+│       ├── ss01_parcels_list_view.png
+│       ├── ss02_deliveries_list_view.png
+│       ├── ss03_receivers_list_view.png
+│       ├── ss04_obj_mgr_parcel.png
+│       ├── ss05_obj_mgr_delivery.png
+│       ├── ss06_obj_mgr_sender.png
+│       ├── ss07_obj_mgr_receiver.png
+│       ├── ss08_agentforce_agents_setup.png
+│       ├── ss09_agentforce_builder_topic_action.png
+│       ├── ss10_agentforce_live_test_grounded.png
+│       ├── ss11_flows_setup_list.png
+│       ├── ss12_flow_builder_debug_canvas.png
+│       ├── ss13_permission_set.png
+│       └── ss14_parcel_record_detail.png
 ├── config/
 │   └── project-scratch-def.json
-├── assets/
-│   └── screenshots/
-│       ├── p1_parcels_list_view.png        <-- Parcels List View
-│       ├── p2_parcel_record_detail.png     <-- Parcel Detail View
-│       ├── p3_flow_builder.png             <-- Flow Builder Canvas
-│       ├── p4_flows_setup_list.png         <-- Setup Flows List
-│       ├── p5_permission_set.png           <-- Permission Sets Configuration
-│       ├── p6_apex_execution.png           <-- CLI Apex Execution Log
-│       ├── p7_agentforce_chat_preview.png  <-- Agentforce AI Live Chat Preview
-│       └── p8_agentforce_builder.png       <-- Agentforce Builder Configuration
 ├── docs/
+│   ├── SwiftShip_Tracker_NM_Report.docx        <-- Official Formatted Word Report
+│   ├── SwiftShip_Tracker_NM_Report.pdf         <-- Official Formatted PDF Report
 │   ├── SwiftShip_Tracker_Project_Documentation.md
 │   └── SwiftShip_Tracker_Reference.pdf
 ├── force-app/main/default/
@@ -329,6 +364,11 @@ sf apex run --file scripts/apex/test_flow.apex
 │   │   └── SwiftShip_Tracker.app-meta.xml
 │   ├── flows/
 │   │   └── Parcel_Details.flow-meta.xml
+│   ├── layouts/
+│   │   ├── Delivery__c-Delivery Layout.layout-meta.xml
+│   │   ├── Parcel__c-Parcel Layout.layout-meta.xml
+│   │   ├── Receiver__c-Receiver Layout.layout-meta.xml
+│   │   └── Sender__c-Sender Layout.layout-meta.xml
 │   ├── objects/
 │   │   ├── Delivery__c/
 │   │   ├── Parcel__c/
@@ -336,6 +376,8 @@ sf apex run --file scripts/apex/test_flow.apex
 │   │   └── Sender__c/
 │   ├── permissionsets/
 │   │   └── Swift_Ship.permissionset-meta.xml
+│   ├── profiles/
+│   │   └── Admin.profile-meta.xml
 │   └── tabs/
 │       ├── Delivery__c.tab-meta.xml
 │       ├── Parcel__c.tab-meta.xml
@@ -351,4 +393,4 @@ sf apex run --file scripts/apex/test_flow.apex
 
 ---
 
-*Repository maintained by Viswanathan R.*
+*Repository maintained by Viswanathan R and team for the Naan Mudhalvan Salesforce Developer Program at Alpha College of Engineering.*

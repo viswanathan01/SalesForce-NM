@@ -8,21 +8,29 @@
 
 ---
 
-## 👥 Project Team Details
+## 👥 Project Team & Institution Details
 
-| Role in Project | Student Name | Register / Roll Number |
-| :--- | :--- | :--- |
-| **Team Lead** | **Viswanathan R** | `210123205033` |
-| **Team Member** | **Srilekha M** | `210123205029` |
-| **Team Member** | **Sindhu S** | `210123205028` |
-| **Team Member** | **Pavadharani R** | `210123205015` |
-| **Team Member** | **Santhosh Kumar S** | `210123205024` |
+<p align="center">
+  <img src="../assets/branding/alpha_college_logo.png" alt="Alpha College of Engineering" width="450" />
+</p>
 
+* **Institution:** **Alpha College of Engineering, Thirumazhisai, Chennai** *(Approved by AICTE and Affiliated to Anna University)*
+* **Naan Mudhalvan Team ID:** `6ab4dab10fc666a751b55876`
 * **Live Salesforce Org ID:** `00Dak00001IgVqvEAF` (Developer Edition — Agentforce Enabled)
 * **Autonomous AI Agent:** `Swift Tracker Version 1` (Active)
 * **Core Flow Automation:** `Parcel_Details` (Version 3 Active)
-* **Official Word Report:** [docs/SwiftShip_Tracker_NM_Report.docx](SwiftShip_Tracker_NM_Report.docx)
-* **Official PDF Report:** [docs/SwiftShip_Tracker_NM_Report.pdf](SwiftShip_Tracker_NM_Report.pdf)
+* **Official Word Report (.docx):** [SwiftShip_Tracker_NM_Report.docx](SwiftShip_Tracker_NM_Report.docx)
+* **Official PDF Report (.pdf):** [SwiftShip_Tracker_NM_Report.pdf](SwiftShip_Tracker_NM_Report.pdf)
+
+### Team Members
+
+| Role in Project | Student Name | Register Number | College Email ID |
+| :--- | :--- | :--- | :--- |
+| **Team Lead** | **Viswanathan R** | `210123205033` | `nviswa192.6880cfe3bfa5@agentforce.com` |
+| **Team Member** | **Srilekha M** | `210123205029` | `srims0912@gmail.com` |
+| **Team Member** | **Sindhu S** | `210123205028` | `sindhubava05@gmail.com` |
+| **Team Member** | **Pavadharani R** | `210123205015` | `rishvibommika@gmail.com` |
+| **Team Member** | **Santhosh Kumar S** | `210123205024` | `mrsanthosh3345@gmail.com` |
 
 ---
 
